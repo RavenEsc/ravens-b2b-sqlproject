@@ -5,7 +5,7 @@
 
 - [x] Drop tables employee, contact, and address if they already exist
 
-- [ ] ??? Any unspecified field type is text.
+- [x] ??? Any unspecified field type is text.
 
 - [x] Create a table called employee with fields for id as int, fname, lname, age as int, hiredate as date.
 
@@ -67,7 +67,7 @@
 
 - [x] Create a table called contact with fields for id as int, cellphone, homephone, email
 
-- [ ] Load records with this data:
+- [x] Load records with this data:
 
   01, 5121325343, 5125234234, apalmer@yachtmail.com
 
@@ -81,13 +81,13 @@
 
   06, 3322827765, 3328760098, ralph.white264@aol.com
 
-- [ ] Create a query that joins (inner) employee and address tables on id and returns fname, lname, age, city, state where fname = Alan 
+- [x] Create a query that joins (inner) employee and address tables on id and returns fname, lname, age, city, state where fname = Alan 
 
-- [ ] Create a query that joins (inner) employee, address, and contact tables on id and returns fname, lname, age, city, state, email where email  =  james.betternot@hotmail.com
+- [x] Create a query that joins (inner) employee, address, and contact tables on id and returns fname, lname, age, city, state, email where email  =  james.betternot@hotmail.com
 
-- [ ] Update Susan Shepard's cellphone to be 4383991212 using fname and lname in the where clause. You must use the employee table to find the name and the contact table to update the cellphone. (Hint: You can use a WHERE ??? = (select ??? from ??? where ??? = "???") to reference a value in the employee table that matches the record in the contact table you are updating.
+- [x] Update Susan Shepard's cellphone to be 4383991212 using fname and lname in the where clause. You must use the employee table to find the name and the contact table to update the cellphone. (Hint: You can use a WHERE ??? = (select ??? from ??? where ??? = "???") to reference a value in the employee table that matches the record in the contact table you are updating.
 
-- [ ] Create a query that returns all of Susan's data by name
+- [x] Create a query that returns all of Susan's data by name
 
 ## Starting
   Goes into detail on how the project works and how to start it.

@@ -1,13 +1,20 @@
+/* This Data Definition Statement is for ensuring there 
+are no previously made tables with the similar names */
 DROP TABLE IF EXISTS employee, contact, address;
 
+/* This Data Definition Statement creates a table 
+'employee' and adds the following columns with set
+data types */
 CREATE TABLE employee (
     id INT,
-    fname,
-    lname,
+    fname VARCHAR,
+    lname VARCHAR,
     age INT,
     hiredate DATE
 );
 
+/* This Data Manipulation Statement adds data to the 
+correspoding table */
 INSERT INTO employee (id, fname, lname, age, hiredate)
 VALUES 
 (01, "Alan", "Palmer", 32, "12-15-2019"),
@@ -31,15 +38,20 @@ VALUES
 (19, "Kylo", "Ren",  34, "06-14-20"),
 (20, "Galen", "Erso",  55, "06-14-20");
 
+/* This Data Definition Statement creates a table 
+'address' and adds the following columns with set
+data types */
 CREATE TABLE address (
     id INT,
-    address1,
-    address2,
-    city,
-    state,
-    zip
+    address1 VARCHAR,
+    address2 VARCHAR,
+    city VARCHAR,
+    state VARCHAR,
+    zip VARCHAR
 );
 
+/* This Data Manipulation Statement adds data to the 
+correspoding table */
 INSERT INTO address (id, address1, address2, city, state, zip)
 VALUES
 (01, "1211 Sudan St", "n/a", "Mobile", "AL", "36609"),
@@ -52,13 +64,18 @@ VALUES
 
 (05, "777 Heavenly Ln", "Box 13", "Pike City", "MN", "50877");
 
+/* This Data Definition Statement creates a table 
+'contact' and adds the following columns with set
+data types */
 CREATE TABLE contact (
     id INT,
-    cellphone,
-    homephone,
-    email
+    cellphone VARCHAR,
+    homephone VARCHAR,
+    email VARCHAR
 );
 
+/* This Data Manipulation Statement adds data to the 
+correspoding table */
 INSERT INTO contact (id, cellphone, homephone, email)
 VALUES
 (01, "5121325343", "5125234234", "apalmer@yachtmail.com"),
@@ -72,3 +89,47 @@ VALUES
 (05, "8880345966", "8888567987", "james.betternot@hotmail.com"),
 
 (06, "3322827765", "3328760098", "ralph.white264@aol.com");
+
+/* This Data Manipulation Statement join the 
+'employee' and 'address' tables on one column 'id' 
+and returns 'fname', 'lname', 'age', 'city', 'state' 
+where fname equals 'Alan' */
+SELECT fname, lname, age, city, state
+FROM employee
+INNER JOIN address ON employee.id = address.id
+WHERE fname = "Alan";
+
+/* This Data Manipulation Statement joins 'employee', 'address', 
+and 'contact' 'tables' on 'id' and returns 'fname', 'lname', 
+'age', 'city', 'state', 'email' where 'email' equals 
+'james.betternot@hotmail.com' */
+SELECT employee.fname, employee.lname, employee.age, address.city, address.state, contact.email
+FROM employee
+INNER JOIN address ON employee.id = address.id
+INNER JOIN contact ON employee.id = contact.id
+WHERE email = "james.betternot@hotmail.com";
+
+/* This Data Manipulation Statement changes the 'cellphone' 
+data in the 'contact' table where the 'id' matches Susan Shepard's 
+'id' by performing a subquery on the 'id' where 'fname' matches 
+'Susan' and 'lname' matches 'Shepard' */
+UPDATE contact
+SET cellphone = "4383991212"
+WHERE id = (
+    SELECT id
+    FROM employee
+    WHERE employee.fname = "Susan" AND employee.lname = "Shepard"
+);
+
+/* This Data Manipulation Statement utilizes a nested query 
+to find all data based on a combination of 'fname' and 'lname' 
+(with 'name' alias) of the joined tables 'address' and 'contact' 
+where it equals Susan Shepard */
+SELECT *
+FROM (
+    SELECT *, CONCAT(fname, " ", lname) AS name
+    FROM employee
+    INNER JOIN address ON employee.id = address.id
+    INNER JOIN contact ON employee.id = contact.id
+)
+WHERE name = "Susan Shepard";
