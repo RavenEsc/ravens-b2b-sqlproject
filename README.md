@@ -1,4 +1,4 @@
-# Readme Template
+# SQL Project (PostgreSQL)
 
 ## Description
   Here is the criteria for the assignment:
@@ -89,12 +89,5 @@
 
 - [x] Create a query that returns all of Susan's data by name
 
-## Starting
-  Goes into detail on how the project works and how to start it.
-
-## Version History
-    Here are where the updates are recorded.
-
 ## Acknowledgements
-  All the people or notable references with this project's creation.
-
+  Thank you to the creators of this challenge, it has been a fun experience!
